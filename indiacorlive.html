@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndiaCoronaLive</title>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light nav_style p-3">
+        <a class="navbar-brand pl-4 log" href="link.html">Covi-Stat</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto pr-5">
+            <li class="nav-item active">
+              <a class="nav-link" href="link.html"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#aboutid">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#symptoms">Symptoms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#preventid">Preventions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="ic" href="indiacorlive.html">IndiaCoronaLive</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  
+  
+      <!-- Corona updates -->
+
+      <section class="corona_update container-fluid"> 
+
+        <div class="my-5">
+            <h3 class="text-center text-uppercase">
+                COVID 19 CASES UPDATES OF INDIA (STATE WISE) 
+            </h3>
+        </div>
+
+         <div class="table-responsive">  <!-- ye table ko responsive krta hai -->
+            <table class="table text-center" id="tbval">
+                <tr>
+                    <th class='tbh bg-light'>S. no</th>
+                    <th class='tbh bg-light'>State and Union territories</th>
+                    <th class='tbh bg-light'>Active</th>
+                    <th class='tbh bg-light'>Confirmed</th>
+                    <th class='tbh bg-light'>Deaths</th>
+                    <th class='tbh bg-light'>Recovered</th>
+                    <th class='tbh bg-light'>Last Updated</th>
+                </tr>
+            </table>
+        </div>
+
+    </section>
+
+
+
+      <!-- Footer -->
+
+<footer class="mt-5">
+
+    <div class="footer_style text-white text-center container-fluid">
+      <p>Copyright by Prateek Goyal</p>
+    </div>
+  
+  </footer>
+
+
+  <script>
+    $.ajax({
+              type: "GET",
+              url: "https://api.covid19india.org/data.json",
+              dataType: "JSON",
+              success: function (data) {
+                  console.log(data);
+                  console.log(data.statewise[1].state);
+
+                  // $.each(data.Global, function(key, value){
+                  //     console.log(key +" : "+value);
+                  //     // $("#s1").html(key +" : "+value);
+                  //     $("#global-wise").append("<tr><td>"+key+"</td>"+"<td>"+value+"</td></tr>");
+                  // });
+                  var sno = 1;
+                  // $.each(data.statewise, function(key, value){
+                      // console.log(key +" : "+value.state);
+                      // $("#s1").html(key +" : "+value);
+                  //     if(value.state != "State Unassigned" || value.state != "Total"){
+                        
+                      
+                  //     $("#tbval").append("<tr><td>"+sno+"</td>"+
+                  //                             "<td>"+value.state+"</td>"+
+                  //                             "<td>"+value.active+"</td>"+
+                  //                             "<td>"+value.confirmed+"</td>"+
+                  //                             "<td>"+value.deaths+"</td>"+
+                  //                             "<td>"+value.recovered+"</td>"+
+                  //                             "<td>"+value.lastupdatedtime+"</td>");
+                  //                             sno++;
+                  //                           }
+                  // });
+
+                  for(let i=1;i<=37;i++){
+
+                    if(data.statewise[i].state != "State Unassigned"){
+                    
+                    $("#tbval").append("<tr><td class='sn'>"+sno+"</td>"+
+                                              "<td class='st'>"+data.statewise[i].state+"</td>"+
+                                              "<td class='act'>"+data.statewise[i].active+"</td>"+
+                                              "<td class='con'>"+data.statewise[i].confirmed+"</td>"+
+                                              "<td class='dea'>"+data.statewise[i].deaths+"</td>"+
+                                              "<td class='act'>"+data.statewise[i].recovered+"</td>"+
+                                              "<td class='con'>"+data.statewise[i].lastupdatedtime+"</td>");
+                                              sno++;
+                    }
+                  }
+              }
+
+          });
+</script>   
+
+
+
+
+
+</body>
+</html>
