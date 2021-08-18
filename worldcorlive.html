@@ -123,31 +123,9 @@
               url: "https://api.covid19api.com/summary",
               dataType: "JSON",
               success: function (data) {
-                  console.log(data);
-                  console.log(data.Countries[1].Country);
-
-                  // $.each(data.Global, function(key, value){
-                  //     console.log(key +" : "+value);
-                  //     // $("#s1").html(key +" : "+value);
-                  //     $("#global-wise").append("<tr><td>"+key+"</td>"+"<td>"+value+"</td></tr>");
-                  // });
+ 
                   var sno = 1;
-                  // $.each(data.statewise, function(key, value){
-                      // console.log(key +" : "+value.state);
-                      // $("#s1").html(key +" : "+value);
-                  //     if(value.state != "State Unassigned" || value.state != "Total"){
-                        
-                      
-                  //     $("#tbval").append("<tr><td>"+sno+"</td>"+
-                  //                             "<td>"+value.state+"</td>"+
-                  //                             "<td>"+value.active+"</td>"+
-                  //                             "<td>"+value.confirmed+"</td>"+
-                  //                             "<td>"+value.deaths+"</td>"+
-                  //                             "<td>"+value.recovered+"</td>"+
-                  //                             "<td>"+value.lastupdatedtime+"</td>");
-                  //                             sno++;
-                  //                           }
-                  // });
+                  
 
                   for(let i=1;i<=191;i++){
 
